@@ -1,0 +1,70 @@
+<div class="container">
+<div class="card mt-3">
+    <div class="card-header text-center">
+      NinthSem
+    </div>
+    <div class="card-body">
+      <h5 class="card-title text-center" data-aos="fade-right">Login Form</h5>
+      <div class="row">
+          <div class="col-sm-6">
+                <!-- login form -->
+            <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)" data-aos="zoom-in">
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Your Requirement</label><br>
+                    <span>not more than 100 chars.</span>
+                    <textarea class="form-control" maxlength="100" id="exampleFormControlTextarea1" rows="3" formControlName="req"></textarea>
+                    <div *ngIf="checkoutForm.get('req').touched && checkoutForm.get('req').errors?.required">
+                        <p class="helper-text" data-aos="fade-right">Enter Your Requirement</p>
+                         </div>
+                </div>
+                <div>
+                    <input type="radio" id="yes" value="Yes" formControlName="choose">
+                    <label for="yes">Yes</label><br>
+                    <input type="radio" id="no" value="No" formControlName="choose">
+                    <label for="no">No</label><br>
+                    <div *ngIf="checkoutForm.get('choose').touched && checkoutForm.get('choose').errors?.required">
+                        <p class="helper-text" data-aos="fade-right">Choose one of them</p>
+                         </div>
+                </div>
+                  <div class="main-dropdown mt-2">
+                      <label>Choose Your Department</label><br>
+                    <select class="dropdown" formControlName="dep">
+                        <option value="NinthSem">NinthSem</option>
+                        <option value="Core">Core</option>
+                        <option value="Elect Engg">Elect Engg</option>
+                        <option value="Mech Engg">Mech Engg</option>
+                        <option value="Design Strategy">Design Strategy</option>
+                      </select>
+                      <div *ngIf="checkoutForm.get('dep').touched && checkoutForm.get('dep').errors?.required">
+                        <p class="helper-text" data-aos="fade-right">Enter Your Department</p>
+                         </div>
+                  </div>
+                  <div class="form-group mt-3">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" formControlName="pass">
+                    <div *ngIf="checkoutForm.get('pass').touched && checkoutForm.get('pass').errors?.required">
+                        <p class="helper-text" data-aos="fade-right">Enter Your Password</p>
+                         </div>
+                  </div>
+                  <button class="btn btn-dark mt-2" [disabled]="checkoutForm.invalid" type="submit">Checkout</button>
+             </form>
+          </div>
+          <!-- login form details -->
+          <div class="col-lg-6">
+            <ul class="list-group list-group-flush p-2">
+                <label data-aos="zoom-in-right">Your Requirement</label>
+                <li class="list-group-item" data-aos="fade-right">{{requirment}}</li>
+                <label data-aos="zoom-in-right">Your Option</label>
+                <li class="list-group-item" data-aos="fade-right">{{choose}}</li>
+                <label data-aos="zoom-in-right">Your Department</label>
+                <li class="list-group-item" data-aos="fade-right">{{department}}</li>
+              </ul>
+          </div>
+      </div>
+    
+    
+    <div class="card-footer text-center text-muted mt-2">
+        We'll never share your Details with anyone else.
+    </div>
+  </div>
+</div>
